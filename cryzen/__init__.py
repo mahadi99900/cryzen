@@ -13,51 +13,24 @@ Here’s a quick guide on how to use what's inside:
 -------------------------------------------------------------------------------
 
 ● AstraCrypt: This is the heavyweight champion here. It uses AES-256-CBC 
-  to keep your data super secure. Use this for sensitive stuff like private 
-  messages or files. (Make sure yo vpyypto installed!)
+  to keep your data super secure. (Requires 'pycryptodome')
   
   Example:
     >>> from cryzen import astra_encrypt, astra_decrypt
     >>> my_token = astra_encrypt("Hey Mahadi!", "your-secret-key")
     >>> print(astra_decrypt(my_token, "your-secret-key"))
 
-● FluxCipher: Need something fast and simple? Flux uses a XOR cipher. 
-  It’s great for quick data masking or obfuscation where you don't 
-  need military-grade security but just want to keep things hidden.
+● FluxCipher: Fast and simple XOR cipher for quick data masking.
   
-  Example:
-    >>> from cryzen import flux_encrypt, flux_decrypt
-    >>> secret = flux_encrypt("Hide this", "my-key")
-    >>> print(flux_decrypt(secret, "my-key"))
-
-● ZenCode: A handy wrapper for URL-safe Base64. Perfect for sending 
-  tokens or short messages through web links without breaking them.
+● ZenCode: URL-safe Base64 wrapper for tokens.
 
 -------------------------------------------------------------------------------
-️ 2. SECURE HASHING (One-way only, no going back!)
+ 2. SECURE HASHING (One-way only, no going back!)
 -------------------------------------------------------------------------------
 
-● OmegaHash: This is what you should use for passwords. It uses 
-  PBKDF2-HMAC-SHA512 with 200,000 rounds and a random salt. It's designed 
-  to be slow for hackers but safe for your users.
-  
-  Example:
-    >>> from cryzen import omega_hash
-    >>> # This gives you 'salt$hash' - store the whole thing!
-    >>> hashed_pass = omega_hash("user_password_123")
-
-● TerraHash: Your go-to for standard SHA-256 hashing. Reliable, 
-  globally recognized, and perfect for file integrity checks.
-
-● NovaHash: Built for speed! It uses BLAKE2b to give you a fast, 
-  compact hash whenever you need performance over everything else.
-
--------------------------------------------------------------------------------
- A FEW EXTRAS
--------------------------------------------------------------------------------
-Inside 'cryzen.utils', I've added some helper functions to handle 
-conversions between text, bytes, hex, and base64 so you don't have to 
-worry about encoding issues.
+● OmegaHash: PBKDF2-HMAC-SHA512 for passwords (200,000 rounds).
+● TerraHash: Standard SHA-256 for integrity checks.
+● NovaHash: Fast BLAKE2b hashing for performance.
 
 Author: Mahadi
 License: MIT
@@ -71,7 +44,7 @@ from .flux import flux_encrypt, flux_decrypt
 from .nova import nova_hash
 from .omega import omega_hash
 from .terra import terra_hash
-from .zencode import zencode_encrypt, zencode_decrypt
+from .zencode import zen_encode as zencode_encrypt, zen_decode as zencode_decrypt
 
 __all__ = [
     'astra_encrypt', 'astra_decrypt',
@@ -82,4 +55,4 @@ __all__ = [
 ]
 
 def hello():
-    print("Cryzen 0.1.2 is ready and loaded!")
+    print("Cryzen v0.1.3 is ready and loaded!")
