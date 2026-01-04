@@ -22,7 +22,7 @@ Internally standard primitives are used (AES, BLAKE2, SHA256, PBKDF2).
 pip install pycryptodome
 
 # then install locally for testing
-pip install -e .
+pip install cryzen
 ```
 
 ## Quick usage
